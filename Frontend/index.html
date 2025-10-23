@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PolicyHub - Insurance Policy Management</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="assets/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-dark" href="#"><i class="fas fa-shield-alt text-warning me-2"></i>PolicyHub</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+          <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="#policies" class="nav-link">Policies</a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+          <li class="nav-item ms-2">
+            <button class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#authModal">
+              <i class="fas fa-user"></i> Login / Register
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero-section d-flex align-items-center text-center text-white" id="home">
+    <div class="container bg-dark bg-opacity-75 p-5 rounded-3 shadow">
+      <h1 class="fw-bold">Secure Your Future with PolicyHub</h1>
+      <p class="lead">A complete solution for managing insurance policies, claims, and premiums efficiently.</p>
+      <button class="btn btn-warning btn-lg mt-3" data-bs-toggle="modal" data-bs-target="#authModal">
+        <i class="fas fa-right-to-bracket me-2"></i>Get Started
+      </button>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section class="py-5" id="about">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4">
+          <img src="assets/img/hero-insurance.jpg" class="img-fluid rounded shadow" />
+        </div>
+        <div class="col-lg-6">
+          <h2 class="fw-bold mb-3">About PolicyHub</h2>
+          <p>
+            PolicyHub simplifies the insurance experience for both customers and administrators.
+            Customers can explore, buy, and manage their policies, while admins maintain policy records, customer data, and claims—all from one place.
+          </p>
+          <ul class="list-unstyled">
+            <li><i class="fas fa-check-circle text-success me-2"></i> Easy-to-use interface</li>
+            <li><i class="fas fa-check-circle text-success me-2"></i> Secure data management</li>
+            <li><i class="fas fa-check-circle text-success me-2"></i> Real-time analytics</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Policies -->
+  <section class="bg-light py-5" id="policies">
+    <div class="container text-center">
+      <h3 class="fw-bold mb-4">Popular Policy Types</h3>
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="card p-3 shadow border-0 h-100">
+            <i class="fas fa-heartbeat fa-2x text-danger mb-3"></i>
+            <h5>Life Insurance</h5>
+            <p class="text-muted small">Ensure financial stability for your loved ones.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card p-3 shadow border-0 h-100">
+            <i class="fas fa-car-side fa-2x text-primary mb-3"></i>
+            <h5>Vehicle Insurance</h5>
+            <p class="text-muted small">Complete protection for your vehicle.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card p-3 shadow border-0 h-100">
+            <i class="fas fa-house-chimney fa-2x text-warning mb-3"></i>
+            <h5>Home Insurance</h5>
+            <p class="text-muted small">Shield your home from natural calamities.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card p-3 shadow border-0 h-100">
+            <i class="fas fa-briefcase-medical fa-2x text-success mb-3"></i>
+            <h5>Health Insurance</h5>
+            <p class="text-muted small">Quality healthcare coverage for your family.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white pt-5 pb-3" id="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h5><i class="fas fa-shield-alt me-2 text-warning"></i>PolicyHub</h5>
+          <p class="small">Your trusted insurance management system.</p>
+        </div>
+        <div class="col-md-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled small">
+            <li><a href="#about" class="text-white text-decoration-none">About</a></li>
+            <li><a href="#policies" class="text-white text-decoration-none">Policies</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h5>Contact</h5>
+          <p class="small"><i class="fas fa-envelope me-2"></i> support@policyhub.com</p>
+          <p class="small"><i class="fas fa-phone me-2"></i> +91 98765 43210</p>
+        </div>
+      </div>
+      <div class="text-center mt-3 border-top border-secondary pt-3 small">© 2025 PolicyHub. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Authentication Modal -->
+  <div class="modal fade" id="authModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-3 rounded-4 shadow">
+        <div class="modal-header border-0">
+          <h5 class="modal-title"><i class="fas fa-user-circle me-2 text-warning"></i>Welcome to PolicyHub</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="nav nav-tabs justify-content-center mb-3">
+            <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#login">Login</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#register">Register</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#adminLogin">Admin</button></li>
+          </ul>
+
+          <div class="tab-content">
+            <!-- Login -->
+            <div class="tab-pane fade show active" id="login">
+              <form id="loginForm">
+                <div class="mb-3"><label>Email / Username</label><input type="text" id="loginUsername" class="form-control" required></div>
+                <div class="mb-3"><label>Password</label><input type="password" id="loginPassword" class="form-control" required></div>
+                <button type="submit" class="btn btn-dark w-100">Login</button>
+              </form>
+            </div>
+
+            <!-- Register -->
+            <div class="tab-pane fade" id="register">
+              <form id="registerForm">
+                <div class="mb-3"><label>Full Name</label><input type="text" id="regName" class="form-control" required></div>
+                <div class="mb-3"><label>Email</label><input type="email" id="regEmail" class="form-control" required></div>
+                <div class="mb-3"><label>Phone</label><input type="text" id="regPhone" class="form-control"></div>
+                <div class="mb-3"><label>Username</label><input type="text" id="regUsername" class="form-control" required></div>
+                <div class="mb-3"><label>Password</label><input type="password" id="regPassword" class="form-control" required></div>
+                <div class="mb-3"><label>Address</label><textarea id="regAddress" class="form-control"></textarea></div>
+                <button type="submit" class="btn btn-success w-100">Register</button>
+              </form>
+            </div>
+
+            <!-- Admin -->
+            <div class="tab-pane fade" id="adminLogin">
+              <form id="adminLoginForm">
+                <div class="mb-3"><label>Admin Username</label><input type="text" id="adminUser" class="form-control" required></div>
+                <div class="mb-3"><label>Password</label><input type="password" id="adminPass" class="form-control" required></div>
+                <button type="submit" class="btn btn-warning w-100 text-dark fw-semibold">Login as Admin</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script>
+    // Ensure admin exists on page load
+    document.addEventListener("DOMContentLoaded", async () => {
+      await ensureAdminExists();
+    });
+  </script>
+</body>
+</html>
