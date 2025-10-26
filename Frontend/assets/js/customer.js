@@ -105,11 +105,13 @@ async function buyPolicy(policyId) {
   });
 
   if (res.ok) {
-    alert("✅ Policy purchased successfully!");
+    alert("Policy purchased successfully!");
+    loadDashboardStats();
     loadAvailablePolicies();
     loadMyPolicies();
+    loadPremiums();
   } else {
-    alert("❌ Failed to buy policy. Try again.");
+    alert("Failed to buy policy. Try again.");
   }
 }
 
@@ -173,6 +175,7 @@ async function loadClaims() {
         <td>${c.claimId}</td>
         <td>${c.policy?.policyType || "N/A"}</td>
         <td>₹${c.claimAmount}</td>
+        <td>${c.submissionDate}</td>
         <td>${c.claimStatus}</td>
         <td>
           ${
@@ -244,11 +247,11 @@ async function payPremium(premiumId) {
   });
 
   if (res.ok) {
-    alert("✅ Premium paid successfully!");
+    alert("Premium paid successfully!");
     loadPremiums();
     loadDashboardStats();
   } else {
-    alert("❌ Failed to pay premium. Try again.");
+    alert("Failed to pay premium. Try again.");
   }
 }
 
@@ -287,12 +290,12 @@ document.getElementById("claimForm").addEventListener("submit", async (e) => {
     });
 
     if (res.ok) {
-      alert("✅ Claim submitted successfully!");
+      alert("Claim submitted successfully!");
       bootstrap.Modal.getInstance(document.getElementById("claimModal")).hide();
       loadClaims(); // reload claims section
     } else {
       const msg = await res.text();
-      alert("❌ Claim failed: " + msg);
+      alert("Claim failed: " + msg);
     }
   } catch (err) {
     console.error(err);

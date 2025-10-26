@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   await new Promise(resolve => setTimeout(resolve, 300));
   const isAdmin = await verifyAdminLogin();
   if (!isAdmin) {
-    alert("⚠️ Please login as admin first!");
+    alert("Please login as admin first!");
     window.location.href = "index.html";
     return;
   }
@@ -30,7 +30,7 @@ function showSection(section) {
 }
 
 // ---------------- Dashboard Data ----------------
-// ---------------- Dashboard Data ----------------
+
 async function loadDashboard() {
   try {
     const res = await fetch(`${API_BASE}/dashboard/stats`, { credentials: "include" });
@@ -48,7 +48,7 @@ async function loadDashboard() {
     document.getElementById("totalRevenue").innerText = "₹" + parseFloat(data.revenue).toFixed(2);
   } catch (err) {
     console.error("Dashboard stats load error:", err);
-    alert("❌ Could not fetch dashboard data. Check backend connection.");
+    alert("Could not fetch dashboard data. Check backend connection.");
   }
 }
 
@@ -92,10 +92,10 @@ function setupAddPolicyForm() {
     const coverage = parseFloat(document.getElementById("coverage").value);
     const duration = parseInt(document.getElementById("duration").value);
 
-    if (!type || coverage <= 0 || duration <= 0) {
-      alert("⚠️ Please enter valid details.");
-      return;
-    }
+    // if (!type || coverage <= 0 || duration <= 0) {
+    //   alert(" Please enter valid details.");
+    //   return;
+    // }
 
     const payload = { policyType: type, coverageAmount: coverage, durationYears: duration };
 
@@ -108,13 +108,13 @@ function setupAddPolicyForm() {
       });
 
       if (res.ok) {
-        alert("✅ Policy added!");
+        alert(" Policy added successfully!");
         form.reset();
         loadPolicies();
         loadDashboard();
         bootstrap.Modal.getInstance(document.getElementById("addPolicyModal")).hide();
       } else {
-        alert("❌ Failed to add policy.");
+        alert("Failed to add policy.");
       }
     } catch (err) {
       console.error("Add policy error:", err);
@@ -124,9 +124,24 @@ function setupAddPolicyForm() {
 
 async function deletePolicy(id) {
   if (!confirm("Delete this policy?")) return;
-  await fetch(`${API_BASE}/policies/${id}`, { method: "DELETE", credentials: "include" });
-  loadPolicies();
-  loadDashboard();
+  try {
+    const res = await fetch(`${API_BASE}/policies/${id}`, {
+      method: "DELETE",
+      credentials: "include"
+    });
+
+    if (res.ok) {
+      alert("Policy deleted successfully!");
+      loadPolicies();
+      loadDashboard();
+    } else {
+      const msg = await res.text();
+      alert("Failed to delete policy: " + msg);
+    }
+  } catch (err) {
+    console.error("Error deleting policy:", err);
+    alert("Network error while deleting policy.");
+  }
 }
 
 async function editPolicy(id) {
@@ -143,7 +158,7 @@ async function editPolicy(id) {
     const modal = new bootstrap.Modal(document.getElementById("addPolicyModal"));
     modal.show();
 
-    // ⚠️ Remove any old event handler
+    // Remove any old event handler
     form.onsubmit = null;
 
     form.onsubmit = async (e) => {
@@ -164,17 +179,17 @@ async function editPolicy(id) {
         });
 
         if (updateRes.ok) {
-          alert("✅ Policy updated successfully!");
+          alert("Policy updated successfully!");
           modal.hide();
           loadPolicies();
           loadDashboard();
         } else {
           const err = await updateRes.text();
-          alert("❌ Update failed: " + err);
+          alert("Update failed: " + err);
         }
       } catch (err) {
         console.error(err);
-        alert("❌ Network error updating policy.");
+        alert("Network error updating policy.");
       }
     };
   } catch (err) {
@@ -246,16 +261,16 @@ async function updateClaimStatus(id, status) {
     });
 
     if (res.ok) {
-      alert(`✅ Claim ${status} successfully!`);
+      alert(`Claim ${status} successfully!`);
       loadClaims(); // Refresh claims list
       loadDashboard(); // Refresh stats
     } else {
       const msg = await res.text();
-      alert("❌ Failed: " + msg);
+      alert("Failed: " + msg);
     }
   } catch (err) {
     console.error("Update claim failed:", err);
-    alert("❌ Network error while updating claim status.");
+    alert("Network error while updating claim status.");
   }
 }
 
